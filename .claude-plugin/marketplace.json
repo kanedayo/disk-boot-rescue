@@ -1,0 +1,24 @@
+{
+  "name": "disk-boot-rescue",
+  "owner": {
+    "name": "kanedayo"
+  },
+  "description": "disk-boot-rescue スキル(データがありながら起動できない Linux サーバの診断・修復プレイブック)のマーケットプレイス",
+  "plugins": [
+    {
+      "name": "disk-boot-rescue",
+      "source": ".",
+      "description": "データがありながら起動できない Linux サーバ(GPT + RAID)の診断・修復プレイブック。実障害から抽出",
+      "keywords": [
+        "linux",
+        "gpt",
+        "mbr",
+        "raid",
+        "mdadm",
+        "boot",
+        "rescue",
+        "pxe"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "disk-boot-rescue",
+  "description": "データがありながら起動できない Linux サーバ(GPT + RAID)の診断・修復プレイブック: LBA0/0xEE 検証、GPT CRC、md スーパブロック解析、PXE 救援ブリッジ、バックアップ冗長性検証",
+  "author": {
+    "name": "kanedayo"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/kanedayo/disk-boot-rescue",
+  "repository": "https://github.com/kanedayo/disk-boot-rescue",
+  "keywords": [
+    "linux",
+    "gpt",
+    "mbr",
+    "raid",
+    "mdadm",
+    "boot",
+    "rescue",
+    "pxe",
+    "disk"
+  ]
+}

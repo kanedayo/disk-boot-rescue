@@ -13,16 +13,54 @@
 
 ## インストール
 
+### 方法 1: Claude Code プラグイン(推奨)
+
+```
+/plugin install disk-boot-rescue --marketplace kanedayo/disk-boot-rescue
+```
+
+(Claude Code 2.1.275 未満の場合):
+
+```
+/plugin marketplace add kanedayo/disk-boot-rescue
+/plugin install disk-boot-rescue@disk-boot-rescue
+```
+
+**スコープ**(インストール対象)は指定できる:
+
+| スコープ | 意味 |
+|---|---|
+| user(既定) | このマシンの全プロジェクトで有効 |
+| project | リポジトリの `.claude/settings.json` に記録 — チームで共有 |
+| local | このリポジトリでの自分のみ(`.claude/settings.local.json`) |
+
+### 方法 2: npx skills(skills.sh / vercel-labs/skills)
+
+```sh
+npx skills add kanedayo/disk-boot-rescue      # カレントディレクトリ(プロジェクトスコープ)
+npx skills add kanedayo/disk-boot-rescue -g   # グローバル(全プロジェクト)
+```
+
+### 方法 3: 手動コピー
+
 ```sh
 cp -r disk-boot-rescue ~/.claude/skills/
 ```
 
-(またはプラグインの `skills/` ディレクトリに配置。スキルは会話内容がトリガー語に一致すると発動し、`SKILL.md` がエントリポイント、`references/` は必要時に読み込まれる。)
+スキルは会話内容がトリガー語に一致すると発動し、`SKILL.md` がエントリポイント、`references/` は必要時に読み込まれる。
+
+## 更新
+
+- **プラグイン**: `claude plugin update disk-boot-rescue@disk-boot-rescue`(または `/plugin` UI)。本プラグインは `version` を**ピン留めしない**ため、バージョンはコミット SHA から計算され、**リポジトリへのすべての push が更新として追従**される。サードパーティのマーケットプレイスは自動更新が**既定オフ**なので、`/plugin` → Marketplaces で "Enable auto-update" をオンにすると背景で自動追従する
+- **npx skills**: `npx skills update`
+- **手動コピー**: 再コピー(または `git pull`)
 
 ## ファイル構成
 
 | ファイル | 内容 |
 |---|---|
+| `.claude-plugin/plugin.json` | プラグインマニフェスト(`version` 非固定 = コミット SHA で追従) |
+| `.claude-plugin/marketplace.json` | 自作マーケットプレイス定義(リポジトリ自身を配布源とする) |
 | `SKILL.md` | エントリポイント: 分岐表、コア・ルール、作業フロー |
 | `references/partition-parsing.md` | カーネルのパーティション解析(0xEE ルール、バイト単位の正確な定義)、GPT レイアウト + CRC、md v1.2 スーパブロック、GRUB legacy レイアウト、NVRAM フォレンジクス |
 | `references/pxe-bridge.md` | PXE 救援ブリッジ: dnsmasq の沈黙原因、initrd 手組みレシピ、自動修復設計(expect/patch + 分類 FATAL) |
