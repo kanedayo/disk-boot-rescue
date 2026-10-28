@@ -48,4 +48,4 @@ cp -r disk-boot-rescue ~/.claude/skills/
 
 ## ライセンス
 
-公開前に `LICENSE` ファイルを追加すること(コードは Python 3 標準ライブラリのみ。ドキュメントは公開済みのカーネル/UEFI/GRUB の挙動を説明している)。
+MIT License(詳細は `LICENSE` ファイルを参照)。コードは Python 3 標準ライブラリのみ。ドキュメントは公開済みのカーネル/UEFI/GRUB の挙動を説明している。
